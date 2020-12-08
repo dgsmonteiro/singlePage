@@ -4,6 +4,7 @@ import {
     Toggle,
     Grid,
     Text,
+    Page,
     GeistProvider,
     CssBaseline
 } from '@geist-ui/react'
@@ -16,23 +17,29 @@ function Home() {
         setThemeType(lastThemeType => (lastThemeType === 'dark' ? 'light' : 'dark'))
     }
     return (
-        <GeistProvider theme={{ type: themeType }}>
-            <CssBaseline />
-            <html>
+            <GeistProvider theme={{ type: themeType }}>
+                <CssBaseline />
+                <Page size="small">
+                    <Page.Header>
+                        <Header />
+                    </Page.Header>
+                    <Page.Content>
+                        <Grid.Container gap={2} justify="center">
+                            <Grid xs={24}>'TESTE'</Grid>
+                            <Grid xs={24}><Toggle onClick={switchThemes} /></Grid>
+                            <Grid xs={24}><Contador /></Grid>
+                        </Grid.Container>
+                    </Page.Content>
+                    <Page.Footer>
+                        <h2>Footer</h2>
+                    </Page.Footer>
+                </Page>
 
-                <Grid.Container gap={2} justify="center">
-                    <Grid xs={24}><Header /></Grid>
-                    <Grid xs={12}><Toggle onClick={switchThemes} /></Grid>
-                    <Grid xs={12}><Contador /></Grid>
-                </Grid.Container>
-
-
-            </html>
-        </GeistProvider>
+            </GeistProvider>
     )
 }
 function Header() {
-    const text = 'Cabeçalho Teste'
+    const text = 'Single Page Example'
 
     return <header>
         <Text h1>{text}</Text>
@@ -42,11 +49,10 @@ function Contador() {
     const [contador, setContador] = useState(0)
     function adicionarContador() {
         setContador(contador + 1);
-        console.log('adicionou')
     }
     return <div>
         <div>{contador}</div>
-        <Button onClick={adicionarContador}>Click Me</Button>
+        <Button onClick={adicionarContador}>+</Button>
     </div>
 }
 
