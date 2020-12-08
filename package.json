@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/dgsmonteiro/singlePage#readme",
   "dependencies": {
+    "@geist-ui/react": "^2.1.0-canary.2",
     "next": "^10.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
